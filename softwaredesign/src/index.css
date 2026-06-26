@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply m-0 bg-bg text-ink-primary font-sans text-base min-h-screen overflow-x-hidden;
+  transition: background 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+    color 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1D4ED8;
+  border-radius: 999px;
+}
