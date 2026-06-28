@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { services } from "../../data/services";
+import MagneticButton from "../ui/MagneticButton";
 
-const links = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+const navLinks = [
+  { label: "Work", to: "/work" },
+  { label: "About", to: "/about" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+    setServicesOpen(false);
+  }, [location.pathname]);
 
   return (
     <header
@@ -27,36 +34,73 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-xl bg-accent-subtle border border-accent-soft shadow-glow flex items-center justify-center">
             <span className="font-mono text-xs text-accent">SD</span>
           </div>
           <div className="flex flex-col leading-tight">
             <span className="text-sm font-semibold tracking-tight text-ink-primary">
-              Softwaredesign.io
+              SoftwareDesign.io
             </span>
-            <span className="text-xs text-ink-muted">
-              Design-driven web engineering
+            <span className="text-xs text-ink-muted hidden sm:block">
+              Software design that ships.
             </span>
           </div>
-        </a>
+        </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+        <nav className="hidden md:flex items-center gap-5 text-sm">
+          <div
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <button
+              type="button"
+              className="text-ink-muted hover:text-ink-primary transition-colors"
+              aria-expanded={servicesOpen}
+            >
+              Services
+            </button>
+            {servicesOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-72">
+                <div className="rounded-2xl border border-border-subtle bg-bg-surface p-2 shadow-soft">
+                  {services.map((service) => (
+                    <Link
+                      key={service.slug}
+                      to={`/services/${service.slug}`}
+                      className="block rounded-xl px-4 py-3 hover:bg-bg-elevated transition-colors"
+                    >
+                      <p className="font-medium text-ink-primary">{service.name}</p>
+                      <p className="text-xs text-ink-muted mt-0.5">
+                        {service.shortDescription}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
               className="text-ink-muted hover:text-ink-primary transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
-            className="ml-4 px-4 py-1.5 rounded-full bg-accent text-xs font-semibold text-white shadow-glow hover:bg-accent-soft transition-all"
+
+          <Link
+            to="/#process"
+            className="text-ink-muted hover:text-ink-primary transition-colors"
           >
+            Process
+          </Link>
+
+          <MagneticButton to="/contact" className="!px-4 !py-1.5 !text-xs">
             Start a project
-          </a>
+          </MagneticButton>
         </nav>
 
         <button
@@ -71,25 +115,38 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border-subtle bg-bg/95">
+        <div className="md:hidden border-t border-border-subtle bg-bg/95 max-h-[80vh] overflow-y-auto">
           <div className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-2 text-sm">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+            <p className="text-[10px] uppercase tracking-wider text-ink-muted pt-1">Services</p>
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                to={`/services/${service.slug}`}
+                className="text-ink-muted hover:text-ink-primary transition-colors pl-2"
+              >
+                {service.name}
+              </Link>
+            ))}
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
                 className="text-ink-muted hover:text-ink-primary transition-colors"
-                onClick={() => setOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-accent px-4 py-1.5 text-xs font-semibold text-white shadow-glow hover:bg-accent-soft transition-all"
-              onClick={() => setOpen(false)}
+            <Link
+              to="/#process"
+              className="text-ink-muted hover:text-ink-primary transition-colors"
             >
-              Start a project
-            </a>
+              Process
+            </Link>
+            <div className="pt-2">
+              <MagneticButton to="/contact" className="!text-xs">
+                Start a project
+              </MagneticButton>
+            </div>
           </div>
         </div>
       )}

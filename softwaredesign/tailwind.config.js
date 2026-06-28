@@ -25,6 +25,7 @@ export default {
       },
       fontFamily: {
         sans: ["system-ui", "SF Pro Text", "Inter", "sans-serif"],
+        serif: ["Fraunces", "Georgia", "serif"],
       },
       boxShadow: {
         glow: "0 0 40px rgba(79, 70, 229, 0.35)",
