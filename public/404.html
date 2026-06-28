@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<script>
+  const path = window.location.pathname;
+  const repoName = '/your-repo-name';
+  const route = path.replace(repoName, '');
+  sessionStorage.redirect = route;
+  window.location.replace(repoName + '/?p=' + encodeURIComponent(route));
+</script>
