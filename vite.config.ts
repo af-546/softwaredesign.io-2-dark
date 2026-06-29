@@ -4,6 +4,7 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || "/softwaredesign.io-2-dark/",
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
