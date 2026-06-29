@@ -68,3 +68,19 @@ body {
   background: #1d4ed8;
   border-radius: 999px;
 }
+
+@media (min-width: 1024px) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  summary,
+  label {
+    cursor: none;
+  }
+}

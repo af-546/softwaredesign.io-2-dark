@@ -27,7 +27,7 @@ export default function ServicePage() {
       <Reveal>
         <div className="flex flex-wrap gap-4">
           <MagneticButton
-            href="/contact"
+            to="/contact"
             className="inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
           >
             Start a project
@@ -151,7 +151,7 @@ export default function ServicePage() {
           Tell us about the project. We reply within one business day.
         </p>
         <MagneticButton
-          href="/contact"
+          to="/contact"
           className="inline-flex items-center mt-6 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
         >
           Start a project

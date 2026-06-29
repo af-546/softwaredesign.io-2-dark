@@ -1,0 +1,10 @@
+{
+  "name": "softwaredesign.io-2-dark",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix softwaredesign",
+    "build": "npm run build --prefix softwaredesign",
+    "lint": "npm run lint --prefix softwaredesign",
+    "preview": "npm run preview --prefix softwaredesign"
+  }
+}

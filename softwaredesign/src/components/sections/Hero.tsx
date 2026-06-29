@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import MagneticButton from "../ui/MagneticButton";
 import Reveal from "../ui/Reveal";
+import TextReveal from "../ui/TextReveal";
 
 const slides = [
   {
@@ -92,20 +93,20 @@ export default function Hero() {
           Boston-based design studio
         </p>
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-ink-primary leading-[1.05] tracking-tight">
-          Software design that ships.
+          <TextReveal text="Software design that ships." />
         </h1>
         <p className="text-base md:text-lg text-ink-secondary leading-relaxed max-w-xl">
           We design and ship software for small businesses and SaaS teams. From landing pages to full product redesigns.
         </p>
         <div className="flex flex-wrap gap-4 pt-2">
           <MagneticButton
-            href="/contact"
+            to="/contact"
             className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
           >
             Start a project
           </MagneticButton>
           <MagneticButton
-            href="/work"
+            to="/work"
             className="inline-flex items-center rounded-full border border-border-subtle px-5 py-2.5 text-sm font-medium text-ink-primary hover:border-accent-soft/50 transition-colors"
           >
             See our work

@@ -82,7 +82,7 @@ export default function AboutPage() {
           Tell us about the project. We&apos;ll reply within one business day.
         </p>
         <MagneticButton
-          href="/contact"
+          to="/contact"
           className="inline-flex items-center mt-6 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
         >
           Start a project

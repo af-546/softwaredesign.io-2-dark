@@ -78,7 +78,7 @@ export default function Navbar() {
             ))}
 
             <MagneticButton
-              href="/contact"
+              to="/contact"
               className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
             >
               Start a project

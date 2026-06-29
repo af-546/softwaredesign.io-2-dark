@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function PageTransition() {
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [location.pathname, location.hash]);
 
   return (
     <AnimatePresence mode="wait">

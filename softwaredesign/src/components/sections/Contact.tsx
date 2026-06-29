@@ -21,7 +21,7 @@ export default function Contact() {
 
         <Reveal className="mt-8 flex flex-col sm:flex-row gap-4">
           <MagneticButton
-            href="/contact"
+            href={`mailto:${site.email}`}
             className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
           >
             Book a call

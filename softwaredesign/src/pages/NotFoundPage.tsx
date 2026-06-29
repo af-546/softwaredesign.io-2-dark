@@ -13,7 +13,7 @@ export default function NotFoundPage() {
       </p>
       <div className="flex gap-4">
         <MagneticButton
-          href="/"
+          to="/"
           className="inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-soft transition-colors"
         >
           Back home

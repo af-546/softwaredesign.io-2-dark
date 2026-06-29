@@ -69,7 +69,7 @@ export default function CaseStudyPage() {
         <div className="rounded-2xl border border-border-subtle bg-bg-surface/70 p-8 text-center">
           <p className="text-ink-secondary">Ready for similar results?</p>
           <MagneticButton
-            href="/contact"
+            to="/contact"
             className="inline-flex items-center mt-4 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-soft transition-colors shadow-glow"
           >
             Start a project

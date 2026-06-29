@@ -3,10 +3,19 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CursorGlow from "../ui/CursorGlow";
 import SmoothScroll from "../ui/SmoothScroll";
+import ScrollProgress from "../ui/ScrollProgress";
+import GrainOverlay from "../ui/GrainOverlay";
+import BackToTop from "../ui/BackToTop";
+import CustomCursor from "../ui/CustomCursor";
+import PageMeta from "../ui/PageMeta";
 
 export default function Layout() {
   return (
     <SmoothScroll>
+      <PageMeta />
+      <ScrollProgress />
+      <GrainOverlay />
+      <CustomCursor />
       <div className="relative min-h-screen mesh-bg">
         <CursorGlow />
         <Navbar />
@@ -14,6 +23,7 @@ export default function Layout() {
           <Outlet />
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </SmoothScroll>
   );
